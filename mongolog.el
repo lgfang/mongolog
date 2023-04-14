@@ -23,8 +23,9 @@
 ;; This is NOT part of Emacs.
 
 ;; This major mode provides syntax highlights and a number of hot keys to
-;; facilitate reading/analysing mongod log files.  Feel free to take this module
-;; as an template and tweak it to meet your specific needs.
+;; facilitate reading/analysing *legacy* mongod log files. Newer versions of
+;; MongoDB write structured log, which is in json format. Hence, just use
+;; "js-mode" for such logs.
 
 ;; Refer to mongolog-mode-map for funtionality provided.
 
@@ -48,7 +49,10 @@
   "Keymap for mongolog major mode.")
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("\\.log\\'" . mongolog-mode))
+
+;; ; no longer the default mode for log files
+;; (add-to-list 'auto-mode-alist '("\\.log\\'" . mongolog-mode))
+
 (defvar mongolog-ts-re
   (concat "^"                                        ; start of line
           "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}"   ; date
